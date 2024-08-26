@@ -1,4 +1,12 @@
+# Environment
 venv
-videos
-output
+
+# Vidoes 
+*.mp4
+*.mov
+
+# Images
+*.jpg
+
+# Misc
 .DS_Store

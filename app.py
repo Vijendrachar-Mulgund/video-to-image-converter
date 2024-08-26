@@ -2,7 +2,7 @@ import cv2
 import sys
 import os
 
-def extract_frames(video_path, output_dir, interval=10):
+def extract_frames(video_path, output_dir, interval=30, img_prefix='frame'):
     cap = cv2.VideoCapture(video_path)
     count = 0
     frame_number = 0
@@ -14,7 +14,7 @@ def extract_frames(video_path, output_dir, interval=10):
             break
 
         if frame_number % interval == 0:
-            frame_path = f"{output_dir}/frame_{count}.jpg"
+            frame_path = f"{output_dir}/{img_prefix}_{count}.jpg"
             print("The Image Generated : ", frame_path)
 
             cv2.imwrite(frame_path, frame)
@@ -39,5 +39,5 @@ if __name__ == "__main__":
             if not os.path.exists(params["-output"]):
                 os.makedirs(params["-output"])
                 
-            extract_frames(params["-input"], params["-output"], int(params["-interval"]))
+            extract_frames(params["-input"], params["-output"], int(params["-interval"]), params["-image_prefix"])
 
